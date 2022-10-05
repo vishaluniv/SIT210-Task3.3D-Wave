@@ -21,8 +21,8 @@ unsigned long previousMillis = 0;
 int count = 0;
 
 ///////please enter your sensitive data in the Secret tab/arduino_secrets.h
-char ssid[] = "Redmi Note";    // your network SSID (name)
-char pass[] = "redmi_4567";    // your network password (use for WPA, or use as key for WEP)
+char ssid[] = SSID;    // your network SSID (name)
+char pass[] = PASS;    // your network password (use for WPA, or use as key for WEP)
 
 // To connect with SSL/TLS:
 // 1) Change WiFiClient to WiFiSSLClient.
@@ -37,8 +37,7 @@ const char broker[] = "broker.mqttdashboard.com";
 int        port     = 1883;
 const char topic[]  = "Vishal";
 
-long Duration;
-int Distance;
+
 
 
 
@@ -94,8 +93,8 @@ void loop() {
   unsigned long currentMillis = millis();
   
   if (currentMillis - previousMillis >= interval) {
-    
-       // save the last time a message was sent
+    if(Wave() == 1){
+    // save the last time a message was sent
       previousMillis = currentMillis;
 
       Serial.print("Sending message to topic: ");
@@ -112,8 +111,8 @@ void loop() {
       Serial.println();
 
     count++;
-    
-   
+    }
+      
   }
   
 }
